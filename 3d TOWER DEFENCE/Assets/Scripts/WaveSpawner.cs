@@ -17,7 +17,7 @@ public class WaveSpawner : MonoBehaviour
 
     private int[][] waves = new int[10][];
     public float timeBetweenWaves = 5f;
-    float countdown = 2f;
+    float countdown = 5f;
     int displayWave = 0;
     int waveIndex = 0;
     public bool doCountdown = true;

@@ -15,8 +15,8 @@ public class Tile : MonoBehaviour
     [SerializeField] GameObject missileLauncherPrefab;
 
 
-    public GameObject turret;
-    public GameObject missileLauncher;
+    GameObject turret;
+    GameObject missileLauncher;
 
     shopManager shop;
 
@@ -25,6 +25,7 @@ public class Tile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         defaultColor = GetComponent<Renderer>().material.color;
         _renderer = GetComponent<Renderer>();
     }
@@ -74,16 +75,31 @@ public class Tile : MonoBehaviour
             }
             else
             {
-                if (!turret.GetComponent<Turret>().turretOptionsPanelForInspector.activeInHierarchy)
-                {
-                    turret.GetComponent<Turret>().Invoke("showMenu", 0f);
-                    menuIsOpen = true;
+                if (turret.GetComponent<Turret>()){
+                    if (!turret.GetComponent<Turret>().turretOptionsPanelForInspector.activeInHierarchy)
+                    {
+                        turret.GetComponent<Turret>().Invoke("showMenu", 0f);
+                        menuIsOpen = true;
+                    }
+                    else
+                    {
+                        menuIsOpen = false;
+                        turret.GetComponent<Turret>().Invoke("backOffMenu", 0f);
+                    }
+                }else if(turret.GetComponent<MissileLauncher>()){
+
+                    if (!turret.GetComponent<MissileLauncher>().turretOptionsPanelForInspector.activeInHierarchy)
+                    {
+                        turret.GetComponent<MissileLauncher>().Invoke("showMenu", 0f);
+                        menuIsOpen = true;
+                    }
+                    else
+                    {
+                        menuIsOpen = false;
+                        turret.GetComponent<MissileLauncher>().Invoke("backOffMenu", 0f);
+                    }
                 }
-                else
-                {
-                    menuIsOpen = false;
-                    turret.GetComponent<Turret>().Invoke("backOffMenu", 0f);
-                }
+                
             }
                     
            

@@ -430,6 +430,7 @@ GameObject:
   - component: {fileID: 4296340978816703681}
   - component: {fileID: 30739338627879989}
   - component: {fileID: 4109602745330059992}
+  - component: {fileID: 5050533918230480897}
   m_Layer: 5
   m_Name: TurretOptions
   m_TagString: Untagged
@@ -497,6 +498,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &5050533918230480897
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641937482884296787}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 51ec6ffbb01465b4cbbbbbd102e03b2d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3188231207631690251
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +851,7 @@ MonoBehaviour:
   isMenuOpen: 0
   startDelay: 0
   upgradeAmountDisplay: {fileID: 104114392092245057}
+  animator: {fileID: 0}
 --- !u!1 &4972364130354468749
 GameObject:
   m_ObjectHideFlags: 0

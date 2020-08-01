@@ -42,6 +42,8 @@ public class Turret : MonoBehaviour
     [SerializeField] public bool isMenuOpen = false;
     [SerializeField] public float startDelay = 2f;
     [SerializeField] public TextMeshProUGUI upgradeAmountDisplay;
+    [SerializeField] Animator animator;
+    bool played = false;
 
     private GameObject onTile;
 
@@ -53,6 +55,8 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+
         upgradeAmount = 1;
 
         turretOptionsPanel = turretOptionsPanelForInspector;
@@ -151,11 +155,12 @@ public class Turret : MonoBehaviour
     public void showMenu()
     {
         turretOptionsPanel.SetActive(true);
+        animator.SetBool("isMenuOpen", true);
     }
 
     public void backOffMenu()
     {
-        turretOptionsPanel.SetActive(false);
+        StartCoroutine("closeMenu");
     }
 
     private void OnDestroy()
@@ -193,5 +198,16 @@ public class Turret : MonoBehaviour
         }
        
         
+    }
+    IEnumerator closeMenu() {
+        
+        if (!played){
+            animator.SetBool("isMenuOpen", false);
+            played = true;
+            yield return new WaitForSeconds(0.3f);
+        }
+        turretOptionsPanel.SetActive(false);
+        played = false;
+        StopAllCoroutines();
     }
 }

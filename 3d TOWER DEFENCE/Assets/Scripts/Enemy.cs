@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
         waveSpawnerGO = GameObject.Find("GameMaster");
         if (waveSpawnerGO != null) {
             waveSpawner = waveSpawnerGO.GetComponent<WaveSpawner>();
-            Debug.Log("GOTTEM");
+            //Debug.Log("GOTTEM");
         }
         
         maxHealth = health;

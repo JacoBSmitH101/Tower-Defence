@@ -65,14 +65,18 @@ public class MissileLauncher : MonoBehaviour
 
     void UpdateTarget()
     {
+        //Debug.Log(target.transform);
         isMenuOpen = turretOptionsPanel.activeInHierarchy;
 
+        
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
+        Debug.Log(enemies);
 
         foreach (GameObject enemy in enemies)
         {
+            Debug.Log(enemy);
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if(distanceToEnemy < shortestDistance)
             {
@@ -88,12 +92,13 @@ public class MissileLauncher : MonoBehaviour
         {
             target = null;
         }
+        //Debug.Log(target.transform);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(upgradeAmount.ToString());
+        //Debug.Log(upgradeAmount.ToString());
         upgradeAmountDisplay.text = upgradeAmount.ToString();
 
         String upgradePrice = Mathf.CeilToInt(100 * upgradeMultiplier).ToString();
