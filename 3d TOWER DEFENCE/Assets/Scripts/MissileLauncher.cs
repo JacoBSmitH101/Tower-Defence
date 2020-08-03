@@ -24,6 +24,7 @@ public class MissileLauncher : MonoBehaviour
     private float fireCountdown;
     public float range = 1f;
     private int currentFirePoint = 0;
+    private float missileDamage = 4;
     private void Start() {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
@@ -75,16 +76,21 @@ public class MissileLauncher : MonoBehaviour
         }
     }
     public void Shoot(){
-        GameObject bulletGO = (GameObject)Instantiate(missilePrefab, new Vector3(firepoints[currentFirePoint].position.x, firepoints[currentFirePoint].position.y, firepoints[currentFirePoint].position.z), firepoints[currentFirePoint].rotation);
+        GameObject missileGO = (GameObject)Instantiate(missilePrefab, new Vector3(firepoints[currentFirePoint].position.x, firepoints[currentFirePoint].position.y, firepoints[currentFirePoint].position.z), firepoints[currentFirePoint].rotation);
             //Instantiate(muzzleFlash, firePoint.position, firePoint.rotation);
-            Bullet bullet = bulletGO.GetComponent<Bullet>();
+            Missile missile = missileGO.GetComponent<Missile>();
 
-            if (bullet != null)
+            if (missile != null)
             {
-                //bullet.Seek(target, bulletDamage);
+                missile.Seek(target, missileDamage);
             }
+            getNextFirePoint();
     }
     public void getNextFirePoint(){
-
+        if (currentFirePoint == firepoints.Length - 1) {
+            currentFirePoint = 0;
+        }else{
+            currentFirePoint++;
+        }
     }
 }

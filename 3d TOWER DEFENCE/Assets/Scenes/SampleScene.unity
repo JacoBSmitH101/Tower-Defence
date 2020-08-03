@@ -5560,6 +5560,11 @@ MonoBehaviour:
     volume: 0.873
     pitch: 1.04
     source: {fileID: 0}
+  - name: missileImpact
+    clip: {fileID: 8300000, guid: e7ec40530c014724a837c781840aab22, type: 3}
+    volume: 0.873
+    pitch: 1.04
+    source: {fileID: 0}
 --- !u!4 &553529637
 Transform:
   m_ObjectHideFlags: 0

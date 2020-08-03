@@ -414,8 +414,8 @@ MonoBehaviour:
   upgradeText: {fileID: 2631184792930620287}
   partToRotate: {fileID: 8857342251010987551}
   turnSpeed: 10
-  fireRate: 4
-  missilePrefab: {fileID: 6270364099184981591, guid: 366fc4aabdfbd1b4ebd686b3f3509c64, type: 3}
+  fireRate: 0.5
+  missilePrefab: {fileID: 6221475310087306667, guid: 429f6d5e67fbee342a6aabb5c77585e9, type: 3}
   range: 10
 --- !u!1 &1067261582068193420
 GameObject:
