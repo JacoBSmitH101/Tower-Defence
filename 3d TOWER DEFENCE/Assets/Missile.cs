@@ -39,14 +39,22 @@ public class Missile : MonoBehaviour
         }
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
         Vector3 deltaPosition = transform.position - prevPosition;
+        // Rotate the forward vector towards the target direction by one step
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, dir, speed * Time.deltaTime, 0.0f);
 
-        if (deltaPosition != Vector3.zero) {
-            // Same effect as rotating with quaternions, but simpler to read
-            transform.forward = deltaPosition;
-        }
-        // Recording current position as previous position for next frame
-        prevPosition = transform.position;
-        transform.rotation = Quaternion.LookRotation(transform.position - prevPosition);
+        // Draw a ray pointing at our target in
+        Debug.DrawRay(transform.position, newDirection, Color.red);
+
+        // Calculate a rotation a step closer to the target and applies rotation to this object
+        transform.rotation = Quaternion.LookRotation(newDirection);
+
+        // if (deltaPosition != Vector3.zero) {
+        //     // Same effect as rotating with quaternions, but simpler to read
+        //     transform.forward = deltaPosition;
+        // }
+        // // Recording current position as previous position for next frame
+        // prevPosition = transform.position;
+        // transform.rotation = Quaternion.LookRotation(transform.position.normalized - prevPosition.normalized);
     }
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.tag == "Enemy") {
