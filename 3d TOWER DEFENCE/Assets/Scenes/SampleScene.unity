@@ -8019,7 +8019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balanceText: {fileID: 267691155}
-  Inputbalance: 2882.65
+  Inputbalance: 160
   inputStandardTurretPrefab: {fileID: 4258566015950263304, guid: cebee03a86fbb8a43bf14a290979f545, type: 3}
 --- !u!114 &809861083
 MonoBehaviour:
