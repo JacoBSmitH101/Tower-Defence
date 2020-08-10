@@ -9,7 +9,7 @@ public class MissileLauncher : MonoBehaviour
     [SerializeField] Transform cam;
     public GameObject turretOptionsPanelForInspector;
     [Header("Main Option:")]
-    public static  float missileLauncherPrice;
+    public static  float missileLauncherPrice = 500f;
     [SerializeField] public string enemyTag;
     [SerializeField] Transform[] firepoints;
     [SerializeField] TextMeshProUGUI upgradeAmountDisplay;

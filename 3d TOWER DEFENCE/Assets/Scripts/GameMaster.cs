@@ -30,8 +30,10 @@ public class GameMaster : MonoBehaviour
         baseHealth = baseHealthForInspector;
         maxHealth = maxHealthForInspector;
 
+        
+
         gameOverPanel.SetActive(false);
-        //pausePanel.SetActive(false);
+        pausePanel.SetActive(false);
     }
 
     private void Update()

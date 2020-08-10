@@ -11,11 +11,20 @@ public class MenuMaster : MonoBehaviour
 
     [SerializeField] private GameObject levelPanel;
     [SerializeField] private GameObject optionsPanel;
+    public SoundManager sound;
+    public GameObject soundManager;
     // Start is called before the first frame update
     void Start()
     {
+        sound = soundManager.GetComponent<SoundManager>();
+        AudioSource musicSound = soundManager.GetComponent<AudioSource>();
+        musicSound.loop = true;
+        
         levelPanel.SetActive(true);
         optionsPanel.SetActive(false);
+        if (PlayerPrefs.GetInt("playMenuMusic") == 1){
+                            
+        }
     }
 
     // Update is called once per frame
@@ -36,5 +45,8 @@ public class MenuMaster : MonoBehaviour
     }
     public void quit() {
         Application.Quit();
+    }
+    public void startMenuMusic() {
+        sound.Play("music");
     }
 }

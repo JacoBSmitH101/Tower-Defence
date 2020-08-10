@@ -7,6 +7,8 @@ using TMPro;
 public class OptionsMenu : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown  graphicsDropdown;
+    [SerializeField] Toggle playMusicToggle;
+    [SerializeField] MenuMaster menuMaster;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,9 @@ public class OptionsMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        playMusicToggle.onValueChanged.AddListener(delegate {
+                ToggleValueChanged(playMusicToggle);
+            });
     }
     public void setGraphics(int qualityIndex)
     {
@@ -26,5 +30,11 @@ public class OptionsMenu : MonoBehaviour
     }
     public void setFullScreen(bool isfullScreen){
         Screen.fullScreen = isfullScreen;
+    }
+    void ToggleValueChanged(Toggle change)
+    {
+        if(change.isOn){
+            menuMaster.startMenuMusic();
+        }
     }
 }
