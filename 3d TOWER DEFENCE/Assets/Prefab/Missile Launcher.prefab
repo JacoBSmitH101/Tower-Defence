@@ -110,7 +110,7 @@ RectTransform:
   m_GameObject: {fileID: 446910456468546538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.041261, y: 0.041261, z: 0.041261}
+  m_LocalScale: {x: 0.12937386, y: 0.12937386, z: 0.12937386}
   m_Children:
   - {fileID: 7151958432310479599}
   m_Father: {fileID: 6695066334128397}
@@ -417,6 +417,7 @@ MonoBehaviour:
   fireRate: 0.5
   missilePrefab: {fileID: 6221475310087306667, guid: 429f6d5e67fbee342a6aabb5c77585e9, type: 3}
   range: 10
+  turretOptionsPanel: {fileID: 6355848654237831949}
 --- !u!1 &1067261582068193420
 GameObject:
   m_ObjectHideFlags: 0

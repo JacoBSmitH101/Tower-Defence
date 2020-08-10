@@ -25,7 +25,12 @@ public class MissileLauncher : MonoBehaviour
     public float range = 1f;
     private int currentFirePoint = 0;
     private float missileDamage = 4;
+    private bool played;
+    private Animator animator;
+    public GameObject turretOptionsPanel;
     private void Start() {
+        turretOptionsPanel.SetActive(false);
+        animator = GetComponentInChildren<Animator>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
     private void Update() {
@@ -93,4 +98,23 @@ public class MissileLauncher : MonoBehaviour
             currentFirePoint++;
         }
     }
+    public void showMenu() {
+        turretOptionsPanel.SetActive(true);
+        animator.SetBool("isMenuOpen", true);
+    }
+    public void backOffMenu() {
+        StartCoroutine("closeMenu");
+    }
+    IEnumerator closeMenu() {
+        
+        if (!played){
+            animator.SetBool("isMenuOpen", false);
+            played = true;
+            yield return new WaitForSeconds(0.3f);
+        }
+        turretOptionsPanel.SetActive(false);
+        played = false;
+        StopAllCoroutines();
+    }
+    
 }
