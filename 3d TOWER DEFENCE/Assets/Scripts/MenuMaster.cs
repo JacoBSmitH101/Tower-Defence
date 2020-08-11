@@ -49,4 +49,7 @@ public class MenuMaster : MonoBehaviour
     public void startMenuMusic() {
         sound.Play("music");
     }
+    public void stopMenuMusic() {
+    
+    }
 }

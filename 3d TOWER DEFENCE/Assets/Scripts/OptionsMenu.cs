@@ -36,5 +36,8 @@ public class OptionsMenu : MonoBehaviour
         if(change.isOn){
             menuMaster.startMenuMusic();
         }
+        if (!change.isOn) {
+            menuMaster.stopMenuMusic();
+        }
     }
 }
