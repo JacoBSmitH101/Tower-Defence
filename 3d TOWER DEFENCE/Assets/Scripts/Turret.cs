@@ -19,7 +19,7 @@ public class Turret : MonoBehaviour
     public float turnSpeed = 10f;
 
     public GameObject bulletPrefab;
-    public Transform firePoint;
+    public Transform[] firePoint;
 
     [Header("Shooting Options")]
 
@@ -43,6 +43,7 @@ public class Turret : MonoBehaviour
     [SerializeField] public float startDelay = 2f;
     [SerializeField] public TextMeshProUGUI upgradeAmountDisplay;
     [SerializeField] Animator animator;
+    private int currentFirePoint = 0;
     bool played = false;
 
     private GameObject onTile;
@@ -130,9 +131,9 @@ public class Turret : MonoBehaviour
 
     private void Shoot()
     {
-        
-            GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Instantiate(muzzleFlash, firePoint.position, firePoint.rotation);
+            Transform nextFirepoint = getNextFirepoint(firePoint);
+            GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, nextFirepoint.position, nextFirepoint.rotation);
+            Instantiate(muzzleFlash, nextFirepoint.position, nextFirepoint.rotation);
             Bullet bullet = bulletGO.GetComponent<Bullet>();
 
             if (bullet != null)
@@ -141,6 +142,17 @@ public class Turret : MonoBehaviour
             }
         
         
+    }
+    public Transform getNextFirepoint(Transform[] firePoints) {
+        if (currentFirePoint == firePoints.Length) {
+            currentFirePoint = 0;
+        }
+        increaseFirePoint();
+        return firePoints[currentFirePoint];
+        
+    }
+    public void increaseFirePoint() {
+        currentFirePoint++;
     }
 
     private void OnDrawGizmosSelected()
@@ -210,4 +222,5 @@ public class Turret : MonoBehaviour
         played = false;
         StopAllCoroutines();
     }
+    
 }
